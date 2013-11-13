@@ -1,0 +1,15 @@
+respawn = "BASE";    // Respawn type 
+respawnDelay = 20;    // Delay in seconds 
+respawnDialog = 0; // 0 to disable the score table on respawn (it can still be opened by pressing 'P').  
+respawnTemplates[] = {"MenuPosition"}; 
+respawnOnStart = 1; // 1 to execute respawn templates when a player joins the game, doesn't work as of 11/12/13. 
+aikills = 1; // When 1, the score table contains score of all playable units as opposed to players only.
+//VAS & VVS
+#include "support\modules\VAS\menu.hpp"
+class CfgFunctions
+{
+	#include "support\modules\VAS\cfgfunctions.hpp"
+	#include "support\modules\VVS\Functions.h"
+};
+//VVS
+#include "support\modules\VVS\menu.h"
