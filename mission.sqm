@@ -115,7 +115,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={26788.227,22.888233,24593.684};
+					position[]={26768.096,22.248837,24599.574};
 					class args
 					{
 						items=4;
@@ -834,7 +834,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=312;
+		items=310;
 		class Item0
 		{
 			position[]={9205.626,15.407278,21614.695};
@@ -3690,16 +3690,16 @@ class Mission
 		};
 		class Item304
 		{
-			position[]={26854.65,23.226912,24623.006};
-			azimut=-318.47812;
+			position[]={26829.508,23.188768,24607.205};
+			azimut=41.086666;
 			id=329;
 			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
+			vehicle="Dirthump_2_F";
 			skill=0.60000002;
 		};
 		class Item305
 		{
-			position[]={26829.508,23.188768,24607.205};
+			position[]={26838.01,23.601847,24599.758};
 			azimut=41.086666;
 			id=330;
 			side="EMPTY";
@@ -3708,8 +3708,8 @@ class Mission
 		};
 		class Item306
 		{
-			position[]={26838.01,23.601847,24599.758};
-			azimut=41.086666;
+			position[]={26820.072,23.177784,24606.303};
+			azimut=131.39046;
 			id=331;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
@@ -3717,7 +3717,7 @@ class Mission
 		};
 		class Item307
 		{
-			position[]={26820.072,23.177784,24606.303};
+			position[]={26812.59,23.267197,24597.844};
 			azimut=131.39046;
 			id=332;
 			side="EMPTY";
@@ -3726,8 +3726,8 @@ class Mission
 		};
 		class Item308
 		{
-			position[]={26812.59,23.267197,24597.844};
-			azimut=131.39046;
+			position[]={26813.281,23.520683,24588.115};
+			azimut=41.086666;
 			id=333;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
@@ -3735,29 +3735,11 @@ class Mission
 		};
 		class Item309
 		{
-			position[]={26813.281,23.520683,24588.115};
+			position[]={26821.785,23.737974,24580.672};
 			azimut=41.086666;
 			id=334;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
-			skill=0.60000002;
-		};
-		class Item310
-		{
-			position[]={26821.785,23.737974,24580.672};
-			azimut=41.086666;
-			id=335;
-			side="EMPTY";
-			vehicle="Dirthump_2_F";
-			skill=0.60000002;
-		};
-		class Item311
-		{
-			position[]={26828.141,23.575632,24591.826};
-			azimut=-318.47812;
-			id=336;
-			side="EMPTY";
-			vehicle="Land_HelipadSquare_F";
 			skill=0.60000002;
 		};
 	};
