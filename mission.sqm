@@ -444,6 +444,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAYER COMMANDER";
 					leader=1;
+					rank="CORPORAL";
 					skill=0.60000002;
 				};
 			};
