@@ -1,3 +1,4 @@
+if (!isServer) exitWith {};
 _towns = nearestLocations [getArray(configFile >> "CfgWorlds" >> worldName >> "centerPosition"), ["NameVillage"], 25000];
 ztowns = [];
 {

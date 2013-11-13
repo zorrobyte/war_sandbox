@@ -67,7 +67,7 @@ class Mission
 	randomSeed=12120087;
 	class Intel
 	{
-		briefingName="DWS_NG_V1";
+		briefingName="War_Sandbox";
 		resistanceWest=0;
 		startWeather=0.29999998;
 		startWind=0.099999994;
@@ -349,7 +349,7 @@ class Mission
 					position[]={9190.4063,14.57499,21647.363};
 					id=6;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_soldier_AR_F";
 					player="PLAYER COMMANDER";
 					leader=1;
 					rank="CORPORAL";
@@ -3936,7 +3936,7 @@ class Mission
 		};
 		class Item323
 		{
-			position[]={26760.068,20.915342,24627.146};
+			position[]={26758.543,20.998985,24624.971};
 			azimut=40.982998;
 			id=357;
 			side="EMPTY";
@@ -3946,7 +3946,7 @@ class Mission
 		};
 		class Item324
 		{
-			position[]={26756.637,20.641581,24630.145};
+			position[]={26755.111,20.718485,24627.969};
 			azimut=40.982998;
 			id=358;
 			side="EMPTY";
@@ -4290,7 +4290,7 @@ class Mission
 		};
 		class Item37
 		{
-			position[]={26758.559,20.791605,24628.436};
+			position[]={26757.033,20.877329,24626.26};
 			name="Ammo_1";
 			text="Ammo";
 			type="o_support";

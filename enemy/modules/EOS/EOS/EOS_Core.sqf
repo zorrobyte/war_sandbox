@@ -166,11 +166,11 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 //SPAWN ALT TRIGGERS	
 			_clear = createTrigger ["EmptyDetector",_mPos];
 			//Fix for units not caching when spawned outside the marker area
-			_clear setTriggerArea [(_mkrX*2),(_mkrY*2),0,true]; 
+			_clear setTriggerArea [(_mkrX),(_mkrY),0,true]; 
 			_clear setTriggerActivation [_strFac,"NOT PRESENT",true]; 
 			_clear setTriggerStatements ["this","",""]; 
 				_taken = createTrigger ["EmptyDetector",_mPos]; 
-				_taken setTriggerArea [(_mkrX*2),(_mkrY*2),0,true];
+				_taken setTriggerArea [(_mkrX),(_mkrY),0,true];
 				_taken setTriggerActivation ["ANY","PRESENT",true]; 
 				_taken setTriggerStatements ["{vehicle _x in thisList && isplayer _x && ((getPosATL _x) select 2) < 5} count allUnits > 0","",""]; 
 _eosAct=true;	
@@ -260,7 +260,7 @@ if (Z_Debug) then {hint "Zone Cached";};
 											_mkr setmarkerAlpha _mAN;
 											if (Z_Debug) then {hint "Zone Captured";};
 											};
-				sleep 1;};
+				sleep 2;};
 // PLAYER LEFT ZONE				
 _eosAct=false;		
 			};sleep 0.5;};
