@@ -3,17 +3,17 @@
 /*
 item0[] = {"START",0,250,-200.000000,-300.000000,-100.000000,-250.000000,0.000000,"START"};
 item1[] = {"Sites_init_done",4,218,-200.000000,-225.000000,-100.000000,-175.000000,0.000000,"Sites" \n "init done"};
-item2[] = {"hide_distant_obj",2,4346,-200.000000,-150.000000,-100.000000,-100.000000,0.000000,"hide" \n "distant objects"};
+item2[] = {"hide_distant_obj",2,250,-200.000000,-150.000000,-100.000000,-100.000000,0.000000,"hide" \n "distant objects"};
 item3[] = {"moved_far_enough",4,218,-250.000000,-75.000000,-150.000000,-25.000000,0.000000,"moved far" \n "enough"};
 item4[] = {"setPos_d",4,218,-150.000000,-75.000000,-50.000000,-25.000000,0.000000,"setPos'd"};
-item5[] = {"airborne",4,218,-350.000000,-75.000000,-250.000000,-25.000000,0.000000,"airborne"};
+item5[] = {"airborne___playe",4,218,-350.000000,-75.000000,-250.000000,-25.000000,0.000000,"airborne & player"};
 item6[] = {"show_all_objects",2,250,-250.000000,0.000000,-150.000000,50.000000,0.000000,"show" \n "all objects"};
 item7[] = {"on_land",4,218,-250.000000,75.000000,-150.000000,125.000000,0.000000,"on land"};
 item8[] = {"",7,210,-379.000000,95.999992,-371.000000,104.000000,0.000000,""};
 item9[] = {"",7,210,-379.000000,-129.000000,-371.000000,-121.000000,0.000000,""};
 item10[] = {"rescan_new_objec",4,218,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"rescan new" \n "objects"};
 item11[] = {"scan_for_new_obj",2,250,-150.000000,0.000000,-50.000000,50.000000,0.000000,"scan for" \n "new objects"};
-item12[] = {"always",8,218,-150.000000,75.000000,-50.000000,125.000000,0.000000,"always"};
+item12[] = {"always",8,4314,-150.000000,75.000000,-50.000000,125.000000,0.000000,"always"};
 item13[] = {"",7,210,71.000000,96.000000,79.000000,104.000000,0.000000,""};
 item14[] = {"",7,210,71.000000,-129.000000,79.000000,-121.000000,0.000000,""};
 link0[] = {0,1};
@@ -34,8 +34,8 @@ link14[] = {11,12};
 link15[] = {12,13};
 link16[] = {13,14};
 link17[] = {14,2};
-globals[] = {25.000000,1,0,0,16777215,640,480,1,180,6316128,1,-499.642944,187.944717,235.123749,-371.611145,644,585,1};
-window[] = {0,-1,-1,-1,-1,907,767,2027,177,1,662};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,180,6316128,1,-405.176758,93.478157,162.290512,-287.190430,649,585,1};
+window[] = {0,-1,-1,-1,-1,880,150,1410,150,1,667};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -58,14 +58,6 @@ class FSM
        "" \n
        "if (isNil ""BIS_persistent"") then {BIS_persistent = []};" \n
        "" \n
-       "_spawnedBySites = [];" \n
-       "{" \n
-       "	if (!(isNil {_x getVariable ""garrison""})) then {" \n
-       "		_site = _x;" \n
-       "		{_spawnedBySites = _spawnedBySites + units _x} forEach (_site getVariable ""garrison"")" \n
-       "	}" \n
-       "} forEach allSites;" \n
-       "" \n
        "_grabMissionObjs = {" \n
        "	_ret = [];" \n
        "	{" \n
@@ -73,11 +65,13 @@ class FSM
        "			_ret = _ret + [_x];" \n
        "			if (vehicle _x != _x && !(vehicle _x  in _ret)) then {_ret = _ret + [vehicle _x]}" \n
        "		}" \n
-       "	} forEach _spawnedBySites;" \n
+       "	} forEach allunits;" \n
        "	{if (vehicleVarName _x != """" && !(_x in BIS_persistent)) then {BIS_persistent = BIS_persistent + [_x]}} forEach _ret;" \n
        "	{if (vehicle _x != _x && !(vehicle _x  in BIS_persistent)) then {BIS_persistent = BIS_persistent + [vehicle _x]}} forEach BIS_persistent;" \n
        "	_ret" \n
-       "};"/*%FSM</STATEINIT""">*/;
+       "};" \n
+       "" \n
+       "diag_log format[""MSO-%1 GTK Initialised Type: YACSA..."", time];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -87,7 +81,8 @@ class FSM
           priority = 0.000000;
           to="hide_distant_obj";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"//!isNil ""BIS_initSitesDone""" \n
+          condition=/*%FSM<CONDITION""">*/"//disabled" \n
+           "//!isNil ""BIS_initSitesDone"";" \n
            "" \n
            "true;"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -104,6 +99,7 @@ class FSM
        "_t = time;" \n
        "" \n
        "if (count _missionObjs == 0) then {_missionObjs = call _grabMissionObjs;};" \n
+       "diag_log format[""FPS Missionobjects: %1"",count _missionObjs];" \n
        "" \n
        "_hidden = +_toHide;" \n
        "_toHide = [];" \n
@@ -132,6 +128,7 @@ class FSM
        "{_x hideObject FALSE; _x enableSimulation TRUE} forEach (_hidden - _toHide + BIS_persistent);" \n
        "{_x hideObject TRUE; _x enableSimulation FALSE} forEach (_toHide - _hidden);" \n
        "" \n
+       "diag_log format[""FPS units to hide: %1"",count _toHide];" \n
        "if (isNil ""BIS_fps_manager_init"") then {BIS_fps_manager_init = TRUE};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -146,13 +143,13 @@ class FSM
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "airborne">*/
-        class airborne
+        /*%FSM<LINK "airborne___playe">*/
+        class airborne___playe
         {
           priority = 0.000000;
           to="show_all_objects";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"{vehicle _x isKindOf ""Air""} count _checkFor > 0"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(isDedicated) && ({vehicle _x isKindOf ""Air""} count _checkFor > 0)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -162,7 +159,8 @@ class FSM
           priority = 0.000000;
           to="scan_for_new_obj";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"BIS_fps_rescanNewObjects || (count _oldPersistent != count BIS_persistent) || (time > 0 && !_afterStartCheck)"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"BIS_fps_rescanNewObjects || (count _oldPersistent != count BIS_persistent) || (time > 0 && !_afterStartCheck)" \n
+           ""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -184,7 +182,8 @@ class FSM
     class show_all_objects
     {
       name = "show_all_objects";
-      init = /*%FSM<STATEINIT""">*/"{_x hideObject FALSE; _x enableSimulation TRUE} forEach _missionObjs;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"{_x hideObject FALSE; _x enableSimulation TRUE} forEach _missionObjs;" \n
+       "diag_log format[""MSO-%1 GTK YACSA Uncached all objects %2..."", time, count _missionObjs];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -208,7 +207,8 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"_afterStartCheck = TRUE;" \n
        "BIS_fps_rescanNewObjects = FALSE;" \n
        "" \n
-       "_missionObjs = call _grabMissionObjs;"/*%FSM</STATEINIT""">*/;
+       "_missionObjs = call _grabMissionObjs;" \n
+       "diag_log format[""MSO-%1 GTK YACSA Scanned new objects %2..."", time, count _missionObjs];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
