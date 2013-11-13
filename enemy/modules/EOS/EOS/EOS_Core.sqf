@@ -115,11 +115,6 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 					_cGrp=_cGrp+[_cGroup];				
 						//0 = [(_cGroup select 2),_r] call EOS_Patrol;
 											_m = createMarker [format ["mrk%1",round random 100000],_pos];
-											_m setMarkerShape "RECTANGLE";
-											_m setMarkerSize [100,100];
-											_m setMarkerBrush "Solid";
-											_m setMarkerAlpha 0;
-											_m setMarkerColor "ColorBlue";
 										0 = [leader (_cGroup select 2), 100, 200, _m,"", 200, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [false,0,0,0,0]] execVM "enemy\modules\EOS\Functions\usps.sqf";
 						sleep 0.1;
 				if (Z_Debug) then {player sidechat format ["Light Vehicle:%1 - r%2",(count _cGrp),_cGrps];0= [_mkr,(count _cGrp),"Light Veh",(getpos leader (_cGroup select 2))] call EOS_debug};
@@ -134,11 +129,6 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 					_dGroup=[_pos,_bSize,_faction,_side] call EOS_Armour;
 					//0 = [(_dGroup select 2),_r] call EOS_Patrol;
 											_m = createMarker [format ["mrk%1",round random 100000],_pos];
-											_m setMarkerShape "RECTANGLE";
-											_m setMarkerSize [100,100];
-											_m setMarkerBrush "Solid";
-											_m setMarkerAlpha 0;
-											_m setMarkerColor "ColorBlue";
 										0 = [leader (_dGroup select 2), 100, 200, _m,"", 200, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [false,0,0,0,0]] execVM "enemy\modules\EOS\Functions\usps.sqf";
 					_dGrp=_dGrp+[_dGroup];sleep 0.1;
 						if (Z_Debug) then {player sidechat format ["Armoured:%1 - r%2",(count _dGrp),_dGrps];0= [_mkr,(count _dGrp),"Armour",(getpos leader (_dGroup select 2))] call EOS_debug};
