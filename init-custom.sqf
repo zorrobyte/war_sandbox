@@ -5,5 +5,3 @@
 		10*60, // seconds to deleted planted explosives (0 means don't delete)
 		0 // seconds to delete dropped smokes/chemlights (0 means don't delete)
 	] execVM 'repetitive_cleanup.sqf';
-	
-call compile preprocessFileLineNumbers "scripts\Init_UPSMON.sqf";
