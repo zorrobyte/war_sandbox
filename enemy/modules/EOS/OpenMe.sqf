@@ -22,6 +22,6 @@ IF (isnil "server")then{hint "YOU MUST PLACE A GAME LOGIC NAMED SERVER!";};
 
 //[HOUSE GROUPS,SIZE OF GROUPS],[PATROL GROUPS,SIZE OF GROUPS],[LIGHT VEHICLES,SIZE OF CARGO],[ARMOURED VEHICLES,SIZE OF GROUPS],[STATIC VEHICLES,HELICOPTERS,SIZE OF HELICOPTER CARGO],[SIDE,MARKERTYPE,DISTANCE]]
 waitUntil {ztowninit==1};
-{[[_x],[0,0],[2,2],[0,0],[0,0],[0,0,0],[0,0,1000,EAST]] call EOS_Spawn} forEach ztowns;
-{[[_x],[0,0],[2,2],[1,1],[0,0],[0,0,0],[0,0,1000,EAST]] call EOS_Spawn} forEach ztownm;
-{[[_x],[0,0],[3,3],[3,3],[2,2],[0,0,0],[0,0,1000,EAST]] call EOS_Spawn} forEach ztownl;
+{[[_x],[1,1],[1,1],[0,0],[0,0],[0,0,0],[0,0,1000,EAST]] call EOS_Spawn} forEach ztowns;
+{[[_x],[2,2],[2,2],[1,1],[0,0],[0,0,0],[0,0,1000,EAST]] call EOS_Spawn} forEach ztownm;
+{[[_x],[3,3],[3,3],[3,3],[2,2],[0,0,0],[0,0,1000,EAST]] call EOS_Spawn} forEach ztownl;

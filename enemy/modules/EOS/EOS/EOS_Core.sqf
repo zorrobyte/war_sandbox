@@ -73,8 +73,8 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 									_pos = [_pos,0,125,5,1,20,0] call BIS_fnc_findSafePos;
 								
 										_aGroup=[_pos,_bSize,_faction,_side] call EOS_spawnPatrol;
-										
-											0=[_mPos,units _aGroup,_r,0,[0,4],true] call callHouseScript;
+									_m = createMarker [format ["mrk%1",round random 100000],_mPos];
+										0 = [leader _aGroup, 100, 200, _m,"", 200, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [true,100,75,3,1]] execVM "enemy\modules\EOS\Functions\usps.sqf";
 												_aGrp=_aGrp+[_aGroup];sleep 0.1;
 						if (Z_Debug) then {hint "Spawning House patrol";0= [_mkr,_n,"House Patrol",getpos (leader _aGroup)] call EOS_debug};
 												};
@@ -96,10 +96,13 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 								_pos = [_mPos, _r, random 360] call BIS_fnc_relPos;
 								_pos = [_pos,0,25,5,1,20,0] call BIS_fnc_findSafePos;
 									_bGroup=[_pos,_bSize,_faction,_side] call EOS_spawnPatrol;
-										//0 = [_bGroup,_r] call EOS_Patrol;
-										    _m = createMarker [format ["mrk%1",round random 100000],_mPos];
-										0 = [leader _bGroup, 100, 200, _m,"", 200, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [true,35,25,3,1]] execVM "enemy\modules\EOS\Functions\usps.sqf";
-										//[leader _bGroup, 100, 200, _m,, 200, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [true,35,25,3,1]]
+										    _m = createMarker [format ["mrk%1",round random 100000],_pos];
+											_m setMarkerShape "RECTANGLE";
+											_m setMarkerSize [100,100];
+											_m setMarkerBrush "Solid";
+											_m setMarkerAlpha 0;
+											_m setMarkerColor "ColorBlue";
+										0 = [leader _bGroup,_m] execVM "enemy\modules\EOS\Functions\UPS.sqf";
 										_bGrp=_bGrp+[_bGroup];sleep 0.1;
 							if (Z_Debug) then {PLAYER SIDECHAT "Spawning patrol";0= [_mkr,_n,"patrol",getpos (leader _bGroup)] call EOS_debug};
 												};
@@ -113,9 +116,13 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 				_pos = [_pos,0,125,5,1,20,0] call BIS_fnc_findSafePos;	
 					_cGroup=[_pos,_bSize,_faction,_side] call EOS_LightVeh;			
 					_cGrp=_cGrp+[_cGroup];				
-						//0 = [(_cGroup select 2),_r] call EOS_Patrol;
 											_m = createMarker [format ["mrk%1",round random 100000],_pos];
-										0 = [leader (_cGroup select 2), 100, 200, _m,"", 200, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [false,0,0,0,0]] execVM "enemy\modules\EOS\Functions\usps.sqf";
+											_m setMarkerShape "RECTANGLE";
+											_m setMarkerSize [100,100];
+											_m setMarkerBrush "Solid";
+											_m setMarkerAlpha 0;
+											_m setMarkerColor "ColorBlue";
+										0 = [leader (_cGroup select 2),_m] execVM "enemy\modules\EOS\Functions\UPS.sqf";
 						sleep 0.1;
 				if (Z_Debug) then {player sidechat format ["Light Vehicle:%1 - r%2",(count _cGrp),_cGrps];0= [_mkr,(count _cGrp),"Light Veh",(getpos leader (_cGroup select 2))] call EOS_debug};
 		};			
@@ -127,9 +134,13 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 			_pos = [_pos,0,125,5,1,20,0] call BIS_fnc_findSafePos;
 				if (surfaceiswater _mPos) exitwith {};
 					_dGroup=[_pos,_bSize,_faction,_side] call EOS_Armour;
-					//0 = [(_dGroup select 2),_r] call EOS_Patrol;
 											_m = createMarker [format ["mrk%1",round random 100000],_pos];
-										0 = [leader (_dGroup select 2), 100, 200, _m,"", 200, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [false,0,0,0,0]] execVM "enemy\modules\EOS\Functions\usps.sqf";
+											_m setMarkerShape "RECTANGLE";
+											_m setMarkerSize [100,100];
+											_m setMarkerBrush "Solid";
+											_m setMarkerAlpha 0;
+											_m setMarkerColor "ColorBlue";
+										0 = [leader (_dGroup select 2),_m] execVM "enemy\modules\EOS\Functions\UPS.sqf";
 					_dGrp=_dGrp+[_dGroup];sleep 0.1;
 						if (Z_Debug) then {player sidechat format ["Armoured:%1 - r%2",(count _dGrp),_dGrps];0= [_mkr,(count _dGrp),"Armour",(getpos leader (_dGroup select 2))] call EOS_debug};
 		};				
