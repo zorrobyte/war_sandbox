@@ -462,7 +462,7 @@
     // Choose if the "Map Marker" debug should be used.
     // Note: This debug creates a map marker for each enemy A.I. group.
     // True / False, default is True
-      // GL4_Global set [62, False];
+       GL4_Global set [62, False];
 
       // Enemy A.I. Map Marker Type:
       // Choose which "Map Marker Type" should be used.
@@ -508,7 +508,7 @@
     // ==============================================================
     // Choose if dead A.I. should be removed after a specific amount of dead bodys was reached or if players are in a specific range to the dead A.I.
     // True / False, default is True
-      // GL4_Global set [68, False];
+       GL4_Global set [68, False];
 
     // GL4 Re-Initialize:
     // ==============================================================
