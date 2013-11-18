@@ -1,6 +1,6 @@
 // =========================================================================================================
 //  Urban Patrol Script  
-//  Version: 2.2.0
+//  Version: 2.1.2
 //  Author: Kronzky (www.kronzky.info / kronzky@gmail.com)
 // ---------------------------------------------------------------------------------------------------------
 //  Required parameters:
@@ -85,10 +85,27 @@ if (isNil("KRON_UPS_INIT")) then {
 	// Misc
 	KRON_getArg = {private["_cmd","_arg","_list","_a","_v"]; _cmd=_this select 0; _arg=_this select 1; _list=_this select 2; _a=-1; {_a=_a+1; _v=format["%1",_list select _a]; if (_v==_cmd) then {_arg=(_list select _a+1)}} foreach _list; _arg};
 	KRON_deleteDead = {private["_u","_s"];_u=_this select 0; _s= _this select 1; _u removeAllEventHandlers "killed"; sleep _s; deletevehicle _u};
-	KRON_KnownEnemy=[objNull,objNull,objNull]; // enemy information is shared between different groups
 	
-	if (isNil("KRON_UPS_Debug")) then {KRON_UPS_Debug=1};
-	//KRON_HQ="Logic" createVehicle [0,0];
+	KRON_AllWest=[];
+	KRON_AllEast=[];
+	KRON_AllRes=[];
+	KRON_KnownEnemy=[objNull,objNull];
+	
+	// find all units in mission
+	{
+		_s = side _x;
+		switch (_s) do {
+			case west: 
+				{ KRON_AllWest=KRON_AllWest+[_x]; };
+			case east: 
+				{ KRON_AllEast=KRON_AllEast+[_x]; };
+			case resistance: 
+				{ KRON_AllRes=KRON_AllRes+[_x]; };
+		};
+	}forEach allUnits;
+
+	if (isNil("Z_Debug")) then {Z_Debug=false};
+	KRON_HQ="Logic" createVehicle [0,0];
 	KRON_UPS_Instances=0;
 	KRON_UPS_Total=0;
 	KRON_UPS_Exited=0;
@@ -140,7 +157,7 @@ _getAreaInfo = {
 		// show area marker 
 		_showmarker = if ("SHOWMARKER" in _UCthis) then {"SHOWMARKER"} else {"HIDEMARKER"};
 		if (_showmarker=="HIDEMARKER") then {
-			_areamarker setMarkerAlpha 0;
+			_areamarker setMarkerPos [-abs(_centerX),-abs(_centerY)];
 		};
 	} else {
 		_centerpos = getPos _areamarker;
@@ -186,39 +203,34 @@ KRON_UPS_Total = KRON_UPS_Total + (count _members);
 
 // what type of "vehicle" is unit ?
 _isman = _npc isKindOf "Man";
-_iscar = _npc isKindOf "Car";
+_iscar = _npc isKindOf "vbs2_LandVehicles";
 _isboat = _npc isKindOf "Ship";
 _isplane = _npc isKindOf "Air";
 
-// check to see whether group is neutral (for attack and avoidance maneuvers)
-_issoldier = false;
-{
-	if (((side _npc) getFriend _x)<.6) exitWith {
-		_issoldier = true;
-	};
-}forEach [east,west,independent,civilian];
+// check to see whether group is an enemy of the player (for attack and avoidance maneuvers)
+// since countenemy doesn't count vehicles, and also only counts enemies if they're known, 
+// we just have to brute-force it for now, and declare *everyone* an enemy who isn't a civilian
+_issoldier = side _npc != civilian;
 
 _friends=[];
 _enemies=[];	
 _sharedenemy=0;
+//TODO: FIND A WAY TO DETERMINE ASSOCIATION OF RESISTANCE UNITS
 if (_issoldier) then {
-	_sharedenemy = switch (side _npc) do {
-		case west: { 0 };
-		case east: { 1 };
-		case independent: { 2 };
+	switch (side _npc) do {
+		case west:
+			{ _friends=_friends+KRON_AllWest; _enemies=_enemies+KRON_AllEast+KRON_AllRes; _sharedenemy=0; };
+		case east:
+			{ _friends=_friends+KRON_AllEast; _enemies=_enemies+KRON_AllWest+KRON_AllRes; _sharedenemy=1; };
+		case resistance:
+			{ _enemies=_enemies+KRON_AllEast+KRON_AllWest; _sharedenemy=2; };
 	};
 	{
-		//player sidechat format["%1,%2: %3",_npc,_x,(side _x) getFriend (side _npc)];
-		if (((side _x) getFriend (side _npc))<.6) then {
-			_enemies=_enemies+[_x];
-		} else {
-			_friends=_friends+[_x];
-		};
-	}forEach allUnits-_members;
+		_friends=_friends-[_x];
+		_x disableAI "autotarget";
+	} forEach _members;
 };
 sleep .01;
-//player sidechat format["%1, friends: %2, enemies: %3 (%4)",_npc,_friends,_enemies,_sharedenemy];
-
 
 // global unit variable to externally influence script 
 _named = false;
@@ -351,9 +363,8 @@ if (_initpos!="ORIGINAL") then {
 	};
 };
 sleep .01;
-
 // track unit
-_track = 	if (("TRACK" in _UCthis) || (KRON_UPS_Debug>0)) then {"TRACK"} else {"NOTRACK"};
+_track = 	if (("TRACK" in _UCthis) || (Z_Debug)) then {"TRACK"} else {"NOTRACK"};
 _trackername = "";
 _destname = "";
 _markerDot = "";
@@ -369,9 +380,9 @@ if (_track=="TRACK") then {
 	if (_markerDot=="") exitWith {};
 	_trackername setMarkerType _markerDot;
 	_markercolor = switch (side _npc) do {
-		case west: {"ColorBlue"};
+		case west: {"ColorGreen"};
 		case east: {"ColorRed"};
-		case independent: {"ColorGreen"};
+		case resistance: {"ColorBlue"};
 		default {"ColorBlack"};
 	};
 	_trackername setMarkerColor _markercolor;
@@ -415,7 +426,6 @@ if (_maxcopies>0) then {
 // name of clones
 _nameprefix = ["PREFIX:","UPSCLONE",_UCthis] call KRON_getArg;
 
-
 // create the clones
 	for "_grpcnt" from 1 to _copies do {
 		// group leader
@@ -426,7 +436,7 @@ _nameprefix = ["PREFIX:","UPSCLONE",_UCthis] call KRON_getArg;
 		}; 
 		// make the clones civilians
 		// use random Civilian models for single unit groups
-		if ((_unittype=="C_man_1") && (count _members==1)) then {_rnd=1+round(random 6); if (_rnd>1) then {_unittype=format["C_man_polo_%1_F",_rnd]}};
+		if ((_unittype=="Civilian") && (count _members==1)) then {_rnd=1+round(random 20); if (_rnd>1) then {_unittype=format["Civilian%1",_rnd]}};
 		
 		_grp=createGroup side _npc;
 		_lead = _grp createUnit [_unittype, getpos _npc, [], 0, "form"];
@@ -455,10 +465,10 @@ _nameprefix = ["PREFIX:","UPSCLONE",_UCthis] call KRON_getArg;
 				[_newunit] join _grp;
 			};
 		} foreach _members;
-		_nul=[_lead,_areamarker,_pause,_noslow,_nomove,_nofollow,_initpos,_track,_showmarker,_shareinfo,"DELETE:",_deletedead] execVM "ups.sqf";
+		_nul=[_lead,_areamarker,_pause,_noslow,_nomove,_nofollow,_initpos,_track,_showmarker,_shareinfo,"DELETE:",_deletedead] execVM "enemy\modules\EOS\Functions\ups.sqf";
 		sleep .05;
 	};	
-	//processInitCommands;
+	processInitCommands;
 };
 sleep .01;
 
@@ -468,29 +478,28 @@ _zoneempty = ["EMPTY:",0,_UCthis] call KRON_getArg;
 
 // create area trigger
 if (_usetrigger!="NOTRIGGER") then {
-	_trgside = switch (side _npc) do { case west: {"WEST"}; case east: {"EAST"}; case independent: {"GUER"}; default {"CIV"};};
+	_trgside = switch (side _npc) do { case west: {"WEST"}; case east: {"EAST"}; case resistance: {"GUER"}; case civilian: {"CIV"};};
 	_trgname="KRON_Trig_"+_trgside+"_"+_areaname;
-	call compile format["%1=objNull",_trgname];
 	_flgname="KRON_Cleared_"+_areaname;
-	// has the trigger been created already?
-	KRON_TRGFlag=objNull;
-	call compile format["%1=false",_flgname];
-	call compile format["KRON_TRGFlag=%1",_trgname];
-	if (isNull KRON_TRGFlag) then {
-		// trigger doesn't exist yet, so create one (make it a bit bigger than the marker, to catch path finding 'excursions' and flanking moves)
-		call compile format["%1=createTrigger['EmptyDetector',[_centerX,_centerY]];",_trgname];
+    // has the trigger been created already? 
+    KRON_TRGFlag=-1; 
+    call compile format["%1=false",_flgname]; 
+    call compile format["if (isNil {%1}) then {KRON_TRGFlag=-1;} else {KRON_TRGFlag=%1};",_trgname]; 
+    if (typeName KRON_TRGFlag == "SCALAR" && {KRON_TRGFlag == -1}) then { 
+        // trigger doesn't exist yet, so create one (make it a bit bigger than the marker, to catch path finding 'excursions' and flanking moves) 
+        call compile format["%1=createTrigger['EmptyDetector',[_centerX,_centerY]];",_trgname]; 
 		call compile format["_areatrigger = %1",_trgname];
 		call compile format["%1 setTriggerArea[_rangeX*1.5,_rangeY*1.5,markerDir _areaname,true]",_trgname];
 		call compile format["%1 setTriggerActivation[_trgside,'PRESENT',true]",_trgname];
 		call compile format["%1 setEffectCondition 'true'",_trgname];
 		call compile format["%1 setTriggerTimeout [5,7,10,true]",_trgname];
 		if (_usetrigger!="SILENTTRIGGER") then {
-			_markerhide = 0;
-			_markershow = .8;
+			_markerhide = [-_centerX,-_centerY];
+			_markershow = [_centerX,_centerY];
 			if (_showmarker=="HIDEMARKER") then {
-				_markershow = 0;
+				_markershow = [-_centerX,-_centerY];
 			};
-			call compile format["%1 setTriggerStatements['count thislist<=%6', 'titletext [''SECTOR <%2> CLEARED'',''PLAIN''];''%2'' setMarkerAlpha %4;%3=true;', 'titletext [''SECTOR <%2> HAS BEEN RE-OCCUPIED'',''PLAIN''];''%2'' setMarkerAlpha %5;%3=false;']", _trgname,_areaname,_flgname,_markerhide,_markershow,_zoneempty];
+			call compile format["%1 setTriggerStatements['count thislist<=%6', 'titletext [''SECTOR <%2> CLEARED'',''PLAIN''];''%2'' setmarkerpos %4;%3=true;', 'titletext [''SECTOR <%2> HAS BEEN RE-OCCUPIED'',''PLAIN''];''%2'' setmarkerpos %5;%3=false;']", _trgname,_areaname,_flgname,_markerhide,_markershow,_zoneempty];
 		} else {
 			call compile format["%1 setTriggerStatements['count thislist<=%3', '%2=true;', '%2=false;']", _trgname,_flgname,_zoneempty];
 		};
@@ -507,7 +516,7 @@ _waiting = if (_nomove=="NOMOVE") then {9999} else {0};
 
 // exit if something went wrong during initialization (or if unit is on roof)
 if (_exit) exitWith {
-	if ((KRON_UPS_DEBUG>0) && !_onroof) then {hint "Initialization aborted"};
+	if ((Z_Debug>0) && !_onroof) then {hint "Initialization aborted"};
 };
 
 // ***********************************************************************************************************
@@ -540,11 +549,8 @@ while {_loop} do {
 	sleep .01;
 
 	// nobody left alive, exit routine
-	if (isNull (_members select 0)) then {
-	_exit=true};
 	if (count _members==0) then {
 		_exit=true;
-		
 	} else {
 		// did the leader die?
 		if (!alive _npc) then {
@@ -563,7 +569,7 @@ while {_loop} do {
 
 		// if the leader comes across another unit that's either injured or dead, go into combat mode as well. 
 		// If the other person is still alive, share enemy information.
-		if (_shareinfo=="SHARE") then {
+		if ((_shareinfo=="SHARE") && (behaviour _npc=="SAFE")) then {
 			_others=_friends-_members;
 			{
 				if ((!(isNull _x) && (_npc distance _x<SHAREDIST)) && ((damage _x>.5) || (behaviour _x in ["AWARE","COMBAT"]))) exitWith {
@@ -667,7 +673,7 @@ while {_loop} do {
 			_fightmode="fight";
 			_timeontarget=0; 
 			_fm=1;
-			 if (KRON_UPS_Debug!=0) then {
+			 if (Z_Debug!=0) then {
 				"dead" setmarkerpos _hitPos; "avoid" setmarkerpos _avoidPos; "flank" setmarkerpos _flankPos; "target" setmarkerpos _attackPos;
 			};
 			_newpos=true;

@@ -1,9 +1,0 @@
-//VAS & VVS
-#include "support\modules\VAS\menu.hpp"
-class CfgFunctions
-{
-	#include "support\modules\VAS\cfgfunctions.hpp"
-	#include "support\modules\VVS\Functions.h"
-};
-//VVS
-#include "support\modules\VVS\menu.h"

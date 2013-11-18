@@ -73,8 +73,8 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 									_pos = [_pos,0,125,5,1,20,0] call BIS_fnc_findSafePos;
 								
 										_aGroup=[_pos,_bSize,_faction,_side] call EOS_spawnPatrol;
-									_m = createMarker [format ["mrk%1",round random 100000],_mPos];
-										0 = [leader _aGroup, 100, 200, _m,"", 200, true, "SAFE", "RED", "LIMITED", "FILE", 0, 30, 0, [true,100,75,3,1]] execVM "enemy\modules\EOS\Functions\usps.sqf";
+										
+											0=[_mPos,units _aGroup,_r,0,[0,4],true] call callHouseScript;
 												_aGrp=_aGrp+[_aGroup];sleep 0.1;
 						if (Z_Debug) then {hint "Spawning House patrol";0= [_mkr,_n,"House Patrol",getpos (leader _aGroup)] call EOS_debug};
 												};
@@ -96,13 +96,14 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 								_pos = [_mPos, _r, random 360] call BIS_fnc_relPos;
 								_pos = [_pos,0,25,5,1,20,0] call BIS_fnc_findSafePos;
 									_bGroup=[_pos,_bSize,_faction,_side] call EOS_spawnPatrol;
-										    _m = createMarker [format ["mrk%1",round random 100000],_pos];
+										//0 = [_bGroup,_r] call EOS_Patrol;
+										    _m = createMarker [format ["mrk%1",round random 100000],_mPos];
 											_m setMarkerShape "RECTANGLE";
 											_m setMarkerSize [100,100];
 											_m setMarkerBrush "Solid";
 											_m setMarkerAlpha 0;
 											_m setMarkerColor "ColorBlue";
-										0 = [leader _bGroup,_m] execVM "enemy\modules\EOS\Functions\UPS.sqf";
+										0 = [leader _bGroup,_m] execVM "enemy\modules\EOS\Functions\ups.sqf";
 										_bGrp=_bGrp+[_bGroup];sleep 0.1;
 							if (Z_Debug) then {PLAYER SIDECHAT "Spawning patrol";0= [_mkr,_n,"patrol",getpos (leader _bGroup)] call EOS_debug};
 												};
@@ -116,14 +117,15 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 				_pos = [_pos,0,125,5,1,20,0] call BIS_fnc_findSafePos;	
 					_cGroup=[_pos,_bSize,_faction,_side] call EOS_LightVeh;			
 					_cGrp=_cGrp+[_cGroup];				
+						//0 = [(_cGroup select 2),_r] call EOS_Patrol;
 											_m = createMarker [format ["mrk%1",round random 100000],_pos];
 											_m setMarkerShape "RECTANGLE";
 											_m setMarkerSize [100,100];
 											_m setMarkerBrush "Solid";
 											_m setMarkerAlpha 0;
 											_m setMarkerColor "ColorBlue";
-										0 = [leader (_cGroup select 2),_m] execVM "enemy\modules\EOS\Functions\UPS.sqf";
-						sleep 0.1;
+										0 = [leader (_cGroup select 2),_m] execVM "enemy\modules\EOS\Functions\ups.sqf";
+						sleep 1;
 				if (Z_Debug) then {player sidechat format ["Light Vehicle:%1 - r%2",(count _cGrp),_cGrps];0= [_mkr,(count _cGrp),"Light Veh",(getpos leader (_cGroup select 2))] call EOS_debug};
 		};			
 //SPAWN ARMOURED VEHICLES
@@ -134,13 +136,14 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 			_pos = [_pos,0,125,5,1,20,0] call BIS_fnc_findSafePos;
 				if (surfaceiswater _mPos) exitwith {};
 					_dGroup=[_pos,_bSize,_faction,_side] call EOS_Armour;
+					//0 = [(_dGroup select 2),_r] call EOS_Patrol;
 											_m = createMarker [format ["mrk%1",round random 100000],_pos];
 											_m setMarkerShape "RECTANGLE";
 											_m setMarkerSize [100,100];
 											_m setMarkerBrush "Solid";
 											_m setMarkerAlpha 0;
 											_m setMarkerColor "ColorBlue";
-										0 = [leader (_dGroup select 2),_m] execVM "enemy\modules\EOS\Functions\UPS.sqf";
+										0 = [leader (_dGroup select 2),_m] execVM "enemy\modules\EOS\Functions\ups.sqf";
 					_dGrp=_dGrp+[_dGroup];sleep 0.1;
 						if (Z_Debug) then {player sidechat format ["Armoured:%1 - r%2",(count _dGrp),_dGrps];0= [_mkr,(count _dGrp),"Armour",(getpos leader (_dGroup select 2))] call EOS_debug};
 		};				
@@ -177,11 +180,11 @@ if (!(getmarkercolor _mkr == "colorblack"))then {
 //SPAWN ALT TRIGGERS	
 			_clear = createTrigger ["EmptyDetector",_mPos];
 			//Fix for units not caching when spawned outside the marker area
-			_clear setTriggerArea [(_mkrX),(_mkrY),0,true]; 
+			_clear setTriggerArea [(_mkrX*2),(_mkrY*2),0,true]; 
 			_clear setTriggerActivation [_strFac,"NOT PRESENT",true]; 
 			_clear setTriggerStatements ["this","",""]; 
 				_taken = createTrigger ["EmptyDetector",_mPos]; 
-				_taken setTriggerArea [(_mkrX),(_mkrY),0,true];
+				_taken setTriggerArea [(_mkrX*2),(_mkrY*2),0,true];
 				_taken setTriggerActivation ["ANY","PRESENT",true]; 
 				_taken setTriggerStatements ["{vehicle _x in thisList && isplayer _x && ((getPosATL _x) select 2) < 5} count allUnits > 0","",""]; 
 _eosAct=true;	
@@ -271,7 +274,7 @@ if (Z_Debug) then {hint "Zone Cached";};
 											_mkr setmarkerAlpha _mAN;
 											if (Z_Debug) then {hint "Zone Captured";};
 											};
-				sleep 2;};
+				sleep 1;};
 // PLAYER LEFT ZONE				
 _eosAct=false;		
 			};sleep 0.5;};

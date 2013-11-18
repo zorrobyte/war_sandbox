@@ -6,7 +6,6 @@
 	Spawns the selected vehicle, if a vehicle is already on the spawn point
 	then it deletes the vehicle from the spawn point.
 */
-_spawn={
 disableSerialization;
 private["_position","_direction","_className","_displayName","_spCheck","_cfgInfo"];
 if(lnbCurSelRow 38101 == -1) exitWith {hint "You did not select a vehicle to spawn!"};
@@ -22,8 +21,9 @@ if(isNil "_position") exitWith {hint "The spawn point marker doesn't exist?";};
 //Check to make sure the spawn point doesn't have a vehicle on it, if it does then delete it.
 _spCheck = nearestObjects[_position,["landVehicle","Air","Ship"],12] select 0;
 if(!isNil "_spCheck") then {deleteVehicle _spCheck;};
-sleep 0.5;
+
 _cfgInfo = [_className] call VVS_fnc_cfgInfo;
+
 _vehicle = _className createVehicle _position;
 _vehicle allowDamage false;
 _vehicle setPos _position; //Make sure it gets set onto the position.
@@ -44,5 +44,3 @@ if(VVS_Checkbox) then
 _vehicle allowDamage true;
 hint format["You have spawned a %1",_displayName];
 closeDialog 0;
-};
-[] spawn _spawn;
