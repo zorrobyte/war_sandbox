@@ -455,7 +455,7 @@
     // Choose if the "Array" debug should be used.
     // Note: This debug shows the most important enemy A.I. arrays.
     // True / False, default is False
-       GL4_Global set [61, True];
+    //   GL4_Global set [61, True];
 
     // GL4 Enemy A.I. Map Marker:
     // ==============================================================
