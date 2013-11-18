@@ -66,6 +66,26 @@ if (isServer) then
 				GL4_Groups set [0, (GL4_Groups select 0) + [_e] ];
 
 				GL4_Reinforcement set [0, (GL4_Reinforcement select 0) + [_e] ];
+			if ( (_a) && (side _f in _this) &&  { (_f isKindOf "StaticMortar") } ) then
+				{
+				if (canFire _f) then
+			{
+				GL4_Artillery set [0, (GL4_Artillery select 0) + [_f] ];
+				GL4_Groups set [0, (GL4_Groups select 0) - [_f] ];
+				GL4_Reinforcement set [0, (GL4_Reinforcement select 0) - [_f] ];
+			};
+				};
+				if ( (_a) && (side _f in _this) &&  { (_f isKindOf "Plane") } ) then
+				{
+				if ( (canFire _f) && (count waypoints _f == 1) ) then
+			{
+				_f setFuel 0;
+
+				GL4_Airstrike set [0, (GL4_Airstrike select 0) + [_f] ];
+				GL4_Groups set [0, (GL4_Groups select 0) - [_f] ];
+				GL4_Reinforcement set [0, (GL4_Reinforcement select 0) - [_f] ];
+			};
+				};
 			};
 
 			_d = _d + 1;

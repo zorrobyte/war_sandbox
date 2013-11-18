@@ -181,7 +181,7 @@ if (isServer) then
 
 	[] execVM (GL4_Path+"GL4\GL4_Features\GL4_Idle\GL4_Idle.sqf");
 
-	[] execVM (GL4_Path+"GL4\GL4_Features\GL4_Patrol\GL4_Patrol.sqf");
+//	[] execVM (GL4_Path+"GL4\GL4_Features\GL4_Patrol\GL4_Patrol.sqf");
 
 	[] execVM (GL4_Path+"GL4\GL4_Features\GL4_Static_Weapon\GL4_Static_Weapon.sqf");
 

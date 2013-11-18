@@ -21,14 +21,14 @@
   // Choose if the "Enemy A.I. Enhancement" should be used.
   // Note: Set this value to False to disable the "Enemy A.I. Enhancement" completly.
   // True / False, default is True
-     GL4_Core set [1, True];
+    // GL4_Core set [1, False];
 
   // GL4 Player and Friendly A.I. Enhancement:
   // ==============================================================
   // Choose if the "Player and Friendly A.I. Enhancement" should be used.
   // Note: Set this value to False to disable the "Player and Friendly A.I. Enhancement" completly.
   // True / False, default is True
-     GL4_Core set [2, True];
+    // GL4_Core set [2, False];
 
   // GL4 Special FX:
   // ==============================================================

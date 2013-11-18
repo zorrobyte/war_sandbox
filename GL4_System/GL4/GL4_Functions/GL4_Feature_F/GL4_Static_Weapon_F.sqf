@@ -159,7 +159,7 @@ GL4_Static_Weapon_F = [
 	{
 		[_b, _c] spawn (GL4_Static_Weapon_F select 4);
 
-		if (_c isKindOf "StaticCannon") then
+		if (_c isKindOf "StaticMortar") then
 		{
 			[_b] join grpNull;
 

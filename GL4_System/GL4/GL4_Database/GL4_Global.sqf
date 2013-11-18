@@ -22,13 +22,13 @@ GL4_Global = [
 	True,
 	["SERGEANT","LIEUTENANT","CAPTAIN","MAJOR","COLONEL"],
 	50,
-	"Sh_85_HE",
+	"Sh_82mm_AMOS",
 
 	// #13
 	True,
 	["SERGEANT","LIEUTENANT","CAPTAIN","MAJOR","COLONEL"],
 	50,
-	"Sh_85_HE",
+	"Sh_82mm_AMOS",
 
 	// #17
 	True,
@@ -54,8 +54,8 @@ GL4_Global = [
 	["SmokeShell","SmokeShellYellow","SmokeShellRed","SmokeShellGreen","SmokeShellPurple","SmokeShellBlue","SmokeShellOrange","G_40mm_Smoke","G_40mm_SmokeRed","G_40mm_SmokeGreen","G_40mm_SmokeYellow"],
 	100,
 	["B_9x19_SD","B_556x45_Ball_SD","B_9x18_SD","B_545x39_SD"],
-	["M203Muzzle","GP25Muzzle","G_30mm_HE","G_40mm_HE"],
-	["Javelin","M136","SMAW","Stinger","Igla","MetisLauncher","RPG18","RPG7V","Strela"],
+	["M203Muzzle","GP25Muzzle","G_40mm_HE"],
+	["launch_B_Titan_F","launch_B_Titan_short_F","launch_I_Titan_F","launch_I_Titan_short_F","launch_NLAW_F","launch_O_Titan_F","launch_O_Titan_short_F","launch_RPG32_F","launch_Titan_F","launch_Titan_short_F"],
 	15,
 	50,
 	300,

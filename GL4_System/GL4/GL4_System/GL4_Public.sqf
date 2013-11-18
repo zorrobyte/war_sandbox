@@ -35,7 +35,7 @@ if (isServer) then
 		};
 	};
 
-	[_a, _b] call compile preprocessFile (GL4_Path+"GL4\GL4_System\GL4_HC_Reinforcement.sqf");
+//	[_a, _b] call compile preprocessFile (GL4_Path+"GL4\GL4_System\GL4_HC_Reinforcement.sqf");
 }
 else
 {

@@ -310,7 +310,7 @@ GL4_Unmount_F = [
 
 				_g = (vehicle leader _f);
 
-				if ( (_g isKindOf "StaticCannon") && (alive _g) && (alive gunner _g) && (canFire _g) ) then
+				if ( (_g isKindOf "StaticMortar") && (alive _g) && (alive gunner _g) && (canFire _g) ) then
 				{
 					if (floor (random 100) < (GL4_Global select 11) ) then
 					{

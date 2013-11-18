@@ -44,7 +44,7 @@ if (alive _a) then
 						{
 							if (_e isKindOf "Man") exitWith
 							{
-								_d = format ["We have some Infantery nearby this location. The leader is %1 %2. A very skilled guy.", rank _e, name _e];
+								_d = format ["We have some Infantry nearby this location. The leader is %1 %2. A very skilled soldier.", rank _e, name _e];
 							};
 
 							if (_e isKindOf "Car") exitWith
@@ -70,7 +70,7 @@ if (alive _a) then
 						else
 						{
 							_d = [ "I don't know anything.",
-							       "I don't know what you wanna to hear from me?",
+							       "I don't know what you want to hear from me?",
 							       "I can't provide you any informations about others."
 
 							] call GL4_Random_Select_F;
@@ -81,9 +81,9 @@ if (alive _a) then
 					else
 					{
 						_d = [ "Please! Leave me alone.",
-						       "I don't think there is something i should tell you.",
-						       "There is nothing i should tell you.",
-						       "Why should i tell you something?"
+						       "I don't think there is something I should tell you.",
+						       "There is nothing I should tell you.",
+						       "Why should I tell you something?"
 
 						] call GL4_Random_Select_F;
 

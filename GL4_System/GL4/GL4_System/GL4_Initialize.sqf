@@ -34,7 +34,7 @@ while { (_c < count _b) } do
 			GL4_Reinforcement set [0, (GL4_Reinforcement select 0) + [_d] ];
 		};
 
-		if (_e isKindOf "StaticCannon") then
+		if (_e isKindOf "StaticMortar") then
 		{
 			if (canFire _e) then
 			{

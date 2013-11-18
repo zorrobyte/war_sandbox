@@ -117,9 +117,9 @@
 
       // Enemy A.I. Artillery Ammo:
       // Choose which type of ammo enemy A.I. artillery should use.
-      // Available ammo classes: "Sh_105_HE", "Sh_120_HE", "Sh_120_SABOT", "Sh_122_HE", "Sh_125_HE", "Sh_125_SABOT", "Bomb", "Grenade"
+      // Available ammo classes: "Sh_82mm_AMOS", "Sh_120_HE", "Sh_120_SABOT", "Sh_122_HE", "Sh_125_HE", "Sh_125_SABOT", "Bomb", "Grenade"
       // Default: "Sh_125_HE"
-        // GL4_Global set [12, "Sh_120_HE"];
+        // GL4_Global set [12, "Sh_82mm_AMOS"];
 
     // ==============================================================
     // GL4 Enemy A.I. Airstrike:
@@ -141,9 +141,9 @@
 
       // Enemy A.I. Airstrike Ammo:
       // Choose which type of ammo enemy A.I. airstrike should use.
-      // Available ammo classes: "B_25mm_HE", "Bo_GBU12_LGB", "M_Sidewinder_AA", "M_R73_AA", "R_S8T_AT", "B_30mm_HE", "M_Ch29_AT", "B_30mmA10_AP", "M_Maverick_AT", "R_Hydra_HE" 
-      // Default: "R_S8T_AT"
-        // GL4_Global set [16, "R_S8T_AT"];
+      // Available ammo classes: "B_25mm_HE", "Bo_GBU12_LGB", "M_Sidewinder_AA", "M_R73_AA", "Sh_82mm_AMOS", "B_30mm_HE", "M_Ch29_AT", "B_30mmA10_AP", "M_Maverick_AT", "R_Hydra_HE" 
+      // Default: "Sh_82mm_AMOS"
+         GL4_Global set [16, "Bo_GBU12_LGB_MI10"];
 
     // ==============================================================
     // GL4 Enemy A.I. Behaviours ( Combat )
@@ -265,7 +265,7 @@
         // GL4_Global set [36, (GL4_Global select 36) + [] ];
 
       // Weapons and Ammo listed in this array can heared by enemy A.I. within a range of 300 meters.
-      // Default: ["M136","JAVELIN","STINGER","RPG7V","STRELA","M9","Makarov","B_9x19_Ball","R_M136_AT"]
+      // Default: ["launch_B_Titan_short_F","launch_B_Titan_F","launch_I_Titan_short_F","launch_RPG32_F","launch_Titan_F","M9","Makarov","B_9x19_Ball","R_launch_B_Titan_short_F_AT","launch_Titan_short_F"]
         // GL4_Global set [37, (GL4_Global select 37) + [] ];
 
       // Enemy A.I. Advancing Suppressed Weapons Distance:
@@ -279,7 +279,7 @@
         // GL4_Global set [39, 50];
 
       // Enemy A.I. Advancing Pistoles and Rocket Launcher Distance:
-      // Choose in which range enemy A.I. can hear Pistoles/Rocket Launcher "M9/Makarov/M136/JAVELIN/RPG7V" weapons.
+      // Choose in which range enemy A.I. can hear Pistoles/Rocket Launcher "M9/Makarov/launch_B_Titan_short_F/launch_B_Titan_F/launch_RPG32_F" weapons.
       // 0 - 500, default is 300 meters
         // GL4_Global set [40, 300];
 
@@ -455,7 +455,7 @@
     // Choose if the "Array" debug should be used.
     // Note: This debug shows the most important enemy A.I. arrays.
     // True / False, default is False
-      // GL4_Global set [61, True];
+       GL4_Global set [61, True];
 
     // GL4 Enemy A.I. Map Marker:
     // ==============================================================
@@ -468,7 +468,7 @@
       // Choose which "Map Marker Type" should be used.
       // Note: Choose True to enable millitary markers.
       // "Dot", "Arrow", "Select", "Destroy" / True, default is True
-        // GL4_Global set [63, "Dot"];
+      //   GL4_Global set [63, "Mil_Dot"];
 
   // ==============================================================
   // 3.) GL4 Friendly A.I. Enhancement:
@@ -515,4 +515,4 @@
     // Choose which classes should be re-initialized.
     // Note: The re-initialize is used to initialize units and vehicles which was created ( spawned ) after a mission was started.
     // ["Class","Class"], default is ["Man","Car","Tank","Air"]
-      // GL4_Global set [69, ["Man","Car","Tank","Air"] ];
+       GL4_Global set [69, ["Man","Car","Tank","Air","StaticMortar"] ];

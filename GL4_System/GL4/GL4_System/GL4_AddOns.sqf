@@ -248,7 +248,7 @@ while { (_c < _b) } do
 			{
 				[_c] call compile preprocessFile (GL4_Path+"GL4\GL4_AddOns\GL4_Database\GL4_Initialize.sqf");
 
-				call compile preprocessFile (GL4_Path+"GL4\GL4_AddOns\GL4_Functions\GL4_Artillery_FX_F.sqf");
+//				call compile preprocessFile (GL4_Path+"GL4\GL4_AddOns\GL4_Functions\GL4_Artillery_FX_F.sqf");
 			};
 		};
 

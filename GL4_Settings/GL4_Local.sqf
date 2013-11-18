@@ -53,7 +53,7 @@
   // Dubbing Features Player: Reloading and Incoming Rocket.
   // Dubbing Features A.I. and Player: Grenade Thrown.
   // True / False, default is True
-    // GL4_Local set [1, False];
+     GL4_Local set [1, False];
 
     // GL4 Dubbing Distance:
     // Choose in which distance to a player the "Dubbing" feature should be used.

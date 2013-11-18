@@ -93,7 +93,7 @@ switch (_a) do
 
 			sleep 10;
 
-			if (count (GL4_Artillery select 0) > 0) then {{_b = (vehicle leader _x); if ( !(_b isKindOf "StaticCannon") || !(alive _b) || !(canFire _b) || !(alive gunner _b) ) then {GL4_Artillery set [0, (GL4_Artillery select 0) - [_x] ] } } } forEach (GL4_Artillery select 0);
+			if (count (GL4_Artillery select 0) > 0) then {{_b = (vehicle leader _x); if ( !(_b isKindOf "StaticMortar") || !(alive _b) || !(canFire _b) || !(alive gunner _b) ) then {GL4_Artillery set [0, (GL4_Artillery select 0) - [_x] ] } } } forEach (GL4_Artillery select 0);
 
 			sleep 10;
 

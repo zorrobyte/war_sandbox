@@ -12,7 +12,7 @@ call compile preprocessFile (GL4_Path+"GL4\GL4_Database\GL4_Local.sqf");
 
 call compile preprocessFile (GL4_Path+"GL4\GL4_Database\GL4_Global.sqf");
 
-call compile preprocessFile (GL4_Path+"GL4\GL4_Database\GL4_High_Command.sqf");
+//call compile preprocessFile (GL4_Path+"GL4\GL4_Database\GL4_High_Command.sqf");
 
 call compile preprocessFile (GL4_Path+"GL4\GL4_Database\GL4_Resource.sqf");
 
@@ -98,22 +98,8 @@ else
 
 			[1] execVM (GL4_Path+"GL4\GL4_System\GL4_Monitor.sqf");
 
-			[GL4_Player_Id] execVM (GL4_Path+"GL4\GL4_Player\GL4_TeamSwitch.sqf");
+//			[GL4_Player_Id] execVM (GL4_Path+"GL4\GL4_Player\GL4_TeamSwitch.sqf");
 
-			if (GL4_High_Command select 0) then
-			{
-				[player] execVM (GL4_Path+"GL4\GL4_System\GL4_HC_Reinforcement.sqf");
-			};
-
-			if (GL4_High_Command select 4) then
-			{
-				[player] execVM (GL4_Path+"GL4\GL4_System\GL4_HC_Helicopter.sqf");
-			};
-
-			if (GL4_High_Command select 8) then
-			{
-				[player] execVM (GL4_Path+"GL4\GL4_System\GL4_HC_Artillery.sqf");
-			};
 
 			if (GL4_Local select 86) then
 			{
@@ -127,9 +113,9 @@ else
 
 					GL4_HC_Force_Move set [0, _e];
 
-					call compile preprocessFile (GL4_Path+"GL4\GL4_Functions\GL4_Feature_F\GL4_HC_Force_Move_F.sqf");
+//					call compile preprocessFile (GL4_Path+"GL4\GL4_Functions\GL4_Feature_F\GL4_HC_Force_Move_F.sqf");
 
-					[player] execVM (GL4_Path+"GL4\GL4_Features\GL4_HC_Force_Move\GL4_HC_Force_Move_Assign.sqf");
+//					[player] execVM (GL4_Path+"GL4\GL4_Features\GL4_HC_Force_Move\GL4_HC_Force_Move_Assign.sqf");
 				};
 			};
 		};

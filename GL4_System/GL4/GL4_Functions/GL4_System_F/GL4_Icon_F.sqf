@@ -124,7 +124,7 @@ GL4_Icon_F = [
 		};
 	};
 
-	if (_b isKindOf "StaticCannon") then
+	if (_b isKindOf "StaticMortar") then
 	{
 		switch (side _b) do
 		{
@@ -147,23 +147,23 @@ GL4_Icon_F = [
 
 	if (isNil "_c") then
 	{
-		_c = "b_empty";
+		_c = "empty";
 
 		switch (side _b) do
 		{
 			case EAST :
 			{
-				_c = "o_empty";
+				_c = "empty";
 			};
 
 			case WEST :
 			{
-				_c = "b_empty";
+				_c = "empty";
 			};
 
 			case RESISTANCE :
 			{
-				_c = "n_empty";
+				_c = "empty";
 			};
 		};
 	};
@@ -283,7 +283,7 @@ GL4_Icon_F = [
 	}
 	else
 	{
-		if (_a isKindOf "StaticCannon") then
+		if (_a isKindOf "StaticMortar") then
 		{
 			_f = [_a] call (GL4_Icon_F select 4);
 

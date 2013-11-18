@@ -82,7 +82,7 @@ GL4_Resource = [
 	["West_Land_v01b","West_Land_v02b","West_Land_v03b","West_Land_v04b","West_Land_v05b","West_Land_v06b","West_Land_v07b","West_Land_v08b","West_Land_v09b","West_Land_v10b","West_Land_v11b","West_Land_v12b","West_Land_v13b","West_Land_v14b"],
 	["East_Land_v01b","East_Land_v02b","East_Land_v03b","East_Land_v04b","East_Land_v05b","East_Land_v06b","East_Land_v07b","East_Land_v08b","East_Land_v09b","East_Land_v10b","East_Land_v11b","East_Land_v12b","East_Land_v13b","East_Land_v14b","East_Land_v15b","East_Land_v16b","East_Land_v17b","East_Land_v18b","East_Land_v19b","East_Land_v20b","East_Land_v21b","East_Land_v22b","East_Land_v23b","East_Land_v24b","East_Land_v25b","East_Land_v26b","East_Land_v27b","East_Land_v28b","East_Land_v29b","East_Land_v30b"],
 
-	["M136","Javelin","Stinger","RPG7V","Strela","Igla","MetisLauncher","SMAW","RPG18"],
+	["launch_B_Titan_short_F","launch_B_Titan_F","launch_I_Titan_short_F","launch_RPG32_F","launch_Titan_F","launch_NLAW_F","launch_O_Titan_F","launch_I_Titan_F","launch_O_Titan_short_F","launch_Titan_short_F"],
 
 	["AmovPknlMrunSlowWrflDb","AmovPercMrunSlowWrflDbl","AmovPercMrunSlowWrflDbr","AmovPercMrunSlowWrflDb","AmovPknlMrunSlowWrflDbl","AmovPknlMrunSlowWrflDbr","AmovPercMrunSlowWrflDl","AmovPercMrunSlowWrflDr"],
 

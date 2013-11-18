@@ -51,11 +51,11 @@ GL4_Artillery_F = [
 
 			if (isDedicated) then
 			{
-				GL4_AddOn_PublicVariable = [7, _e]; publicVariable "GL4_AddOn_PublicVariable";
+//				GL4_AddOn_PublicVariable = [7, _e]; publicVariable "GL4_AddOn_PublicVariable";
 			}
 			else
 			{
-				[_e] call (GL4_Artillery_FX_F select 0);
+//				[_e] call (GL4_Artillery_FX_F select 0);
 			};
 
 			sleep (random 3);
@@ -124,19 +124,34 @@ GL4_Artillery_F = [
 
 	_b = "";
 
-	if (_a isKindOf "M119") then
+	if (_a isKindOf "I_Mortar_01_F") then
 	{
-		_b = "Sh_105_HE";
+		_b = "Sh_82mm_AMOS";
 	};
 
-	if (_a isKindOf "D30") then
+	if (_a isKindOf "O_Mortar_01_F") then
 	{
-		_b = "Sh_122_HE";
+		_b = "Sh_82mm_AMOS";
 	};
-
-	if (_a isKindOf "MLRS") then
+	if (_a isKindOf "B_G_Mortar_01_F") then
 	{
-		_b = "R_MLRS";
+		_b = "Sh_82mm_AMOS";
+	};
+	if (_a isKindOf "B_Mortar_01_F") then
+	{
+		_b = "Sh_82mm_AMOS";
+	};
+	if (_a isKindOf "O_MBT_02_arty_F") then
+	{
+		_b = "Sh_155mm_AMOS";
+	};
+	if (_a isKindOf "B_MBT_01_arty_F") then
+	{
+		_b = "Sh_155mm_AMOS";
+	};
+	if (_a isKindOf "B_MBT_01_mlrs_F") then
+	{
+		_b = "R_230mm_HE";
 	};
 
 	_b

@@ -102,7 +102,7 @@ switch (_a) do
 		{
 			_b = _this select 1;
 
-			[_b] call (GL4_Artillery_FX_F select 0);
+//			[_b] call (GL4_Artillery_FX_F select 0);
 		};
 	};
 
