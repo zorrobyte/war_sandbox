@@ -34,7 +34,7 @@ GL4_Artillery_F = [
 
 		_a fire (typeOf _a);
 
-		[getPos _b] spawn (GL4_Dubbing_F select 5);
+//		[getPos _b] spawn (GL4_Dubbing_F select 5);
 
 		_c = [_a] call (GL4_Artillery_F select 2);
 

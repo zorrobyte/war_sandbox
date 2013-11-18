@@ -44,7 +44,7 @@ while { (_c < _b) } do
 
 				if (_d) then
 				{
-					call compile preprocessFile (GL4_Path+"GL4\GL4_AddOns\GL4_Functions\GL4_Dubbing_F.sqf");
+//					call compile preprocessFile (GL4_Path+"GL4\GL4_AddOns\GL4_Functions\GL4_Dubbing_F.sqf");
 
 					if (_a) then
 					{

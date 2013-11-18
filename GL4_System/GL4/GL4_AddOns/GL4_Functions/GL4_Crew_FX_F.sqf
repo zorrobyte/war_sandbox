@@ -128,7 +128,7 @@ GL4_Crew_FX_F = [
 		{
 			_e = (GL4_Resource select 18) call GL4_Random_Select_F;
 
-			[_a, _e] call (GL4_Dubbing_F select 6);
+//			[_a, _e] call (GL4_Dubbing_F select 6);
 
 			if (_a distance _b > 5) then
 			{

@@ -96,7 +96,7 @@ GL4_Suppressed_F = [
 
 	sleep 1 + (random 1);
 
-	["Suppressed", _a] call (GL4_Dubbing_F select 4);
+//	["Suppressed", _a] call (GL4_Dubbing_F select 4);
 
 	_c = 1 + (random 1);
 

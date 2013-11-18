@@ -205,7 +205,7 @@ GL4_Advancing_F = [
 
 		{if (floor (random 100) < 50) then {_x doWatch (getPos _a) } } forEach units _b;
 
-		["Advancing", _b] call (GL4_Dubbing_F select 4);
+//		["Advancing", _b] call (GL4_Dubbing_F select 4);
 
 		sleep (random 30);
 
@@ -235,7 +235,7 @@ GL4_Advancing_F = [
 
 			{if (floor (random 100) < 50) then {_x doWatch (getPos _a) } } forEach units _b;
 
-			["Advancing", _b] call (GL4_Dubbing_F select 4);
+//			["Advancing", _b] call (GL4_Dubbing_F select 4);
 
 			_b lockWp True;
 
@@ -263,7 +263,7 @@ GL4_Advancing_F = [
 
 			{if (floor (random 100) < 50) then {_x doWatch (getPos _a) } } forEach units _b;
 
-			["Advancing", _b] call (GL4_Dubbing_F select 4);
+//			["Advancing", _b] call (GL4_Dubbing_F select 4);
 
 			sleep (random 30);
 

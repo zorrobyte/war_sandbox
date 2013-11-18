@@ -117,7 +117,7 @@ GL4_EH_Killed_F = [
 
 				if (_d countEnemy [_b] == 1) then
 				{
-					["Woohoo", _d] spawn (GL4_Dubbing_F select 4);
+//					["Woohoo", _d] spawn (GL4_Dubbing_F select 4);
 				};
 			};
 

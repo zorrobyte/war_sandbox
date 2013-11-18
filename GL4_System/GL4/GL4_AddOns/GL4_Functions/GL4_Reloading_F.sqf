@@ -59,7 +59,7 @@ GL4_Reloading_F = [
 									};
 								};
 
-								[_b, _f] call (GL4_Dubbing_F select 6);
+//								[_b, _f] call (GL4_Dubbing_F select 6);
 
 								GL4_Reloading set [1, (GL4_Reloading select 1) + [_b] ];
 							};

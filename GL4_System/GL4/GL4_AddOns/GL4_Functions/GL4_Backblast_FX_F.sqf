@@ -239,7 +239,7 @@ GL4_Backblast_FX_F = [
 	{
 		_e = (GL4_Resource select 18) call GL4_Random_Select_F;
 
-		[_b, _e] call (GL4_Dubbing_F select 6);
+//		[_b, _e] call (GL4_Dubbing_F select 6);
 	};
 
 	_b switchMove "AdthPercMstpSrasWrflDnon_16";

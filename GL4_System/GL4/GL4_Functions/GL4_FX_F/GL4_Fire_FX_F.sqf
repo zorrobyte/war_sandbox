@@ -191,7 +191,7 @@ GL4_Fire_FX_F = [
 				{
 					_g = (GL4_Resource select 18) call GL4_Random_Select_F;
 
-					[_a, _g] call (GL4_Dubbing_F select 6);
+//					[_a, _g] call (GL4_Dubbing_F select 6);
 				};
 			};
 		}
