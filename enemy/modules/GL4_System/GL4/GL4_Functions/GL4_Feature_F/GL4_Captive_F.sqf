@@ -198,7 +198,7 @@ GL4_Captive_F = [
 
 	if (_d != "") then
 	{
-		_a action ["DROPWEAPON", WeaponHolder, _d];
+//		_a action ["DROPWEAPON", WeaponHolder, _d];
 
 		_e = time + 5;
 
@@ -218,7 +218,7 @@ GL4_Captive_F = [
 
 		if (_d != "") then
 		{
-			_a action ["DROPWEAPON", WeaponHolder, _d];
+//			_a action ["DROPWEAPON", WeaponHolder, _d];
 
 			_e = time + 5;
 

@@ -381,7 +381,7 @@
       // GL4 Enemy A.I. Difficult "Class and Rank" Skill Types: ( New )
       // ==============================================================
       // Choose the difficult "Skill Types" of specific enemy A.I. classes and ranks.
-         GL4_Global set [49, call compile preprocessFile "GL4_Settings\GL4_Skill_Types.sqf" ];
+         GL4_Global set [49, call compile preprocessFile "enemy\modules\GL4_Settings\GL4_Skill_Types.sqf" ];
 
     // ==============================================================
     // GL4 Enemy A.I. Surrender:

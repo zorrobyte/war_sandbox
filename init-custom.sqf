@@ -1,17 +1,17 @@
 private ["_a","_b"];
 
-GL4_Path = "GL4_System\";
+GL4_Path = "enemy\modules\GL4_System\";
 
 [] spawn
 {
 	waitUntil { !(isNil "GL4_Core") };
-	call compile preProcessFile "GL4_Settings\GL4_Core.sqf";
+	call compile preProcessFile "enemy\modules\GL4_Settings\GL4_Core.sqf";
 
 	waitUntil { !(isNil "GL4_Global") };
-	call compile preProcessFile "GL4_Settings\GL4_Global.sqf";
+	call compile preProcessFile "enemy\modules\GL4_Settings\GL4_Global.sqf";
 
 	waitUntil { !(isNil "GL4_Local") };
-	call compile preProcessFile "GL4_Settings\GL4_Local.sqf";
+	call compile preProcessFile "enemy\modules\GL4_Settings\GL4_Local.sqf";
 };
 
 if (isServer) then
