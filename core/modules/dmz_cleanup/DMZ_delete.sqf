@@ -21,7 +21,7 @@ if (!isServer) exitWith {};  // test for MP usage, has no impact on SP missions.
 */
 
 DMZ_Included = [];  				// used to include certain objects into the delete, such as for example any unit/vehicle, ieds, ammo crates, custom buildings/bases/compounds etc. any object can be used, update it same way as DMZ_Excluded runtime with info from below.
-DMZ_Excluded = [];  				// used to exclude certain men or vehicles or types/classname from being deleted.
+DMZ_Excluded = ["ammo1","ammo2","ammo3","ammo4"];  				// used to exclude certain men or vehicles or types/classname from being deleted.
 
 /*
 	* more info on DMZ_Excluded:
