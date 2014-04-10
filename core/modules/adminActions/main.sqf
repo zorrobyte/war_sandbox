@@ -10,7 +10,6 @@
 * Email: jman@kellys-heroes.eu
 * Web: http://www.kellys-heroes.eu
 * 
-* modified for MSO: 16/08/2012
 *
 * */
 
