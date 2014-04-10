@@ -147,7 +147,7 @@ if isserver then {
         _x setpos _pos;
         _x setformdir _dir;
         if _disableMove then { doStop _x; };
-        if _stance then { _x setunitpos "MIDDLE" };
+        if _stance then { _x setunitpos "UP" };
       };
     };
   } foreach _men;

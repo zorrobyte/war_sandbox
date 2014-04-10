@@ -1,3 +1,4 @@
+
 /*
   SHK_patrol
 
@@ -6,28 +7,19 @@
   Version 0.22
   Author: Shuko (shuko@quakenet, miika@miikajarvinen.fi)
   http://forums.bistudio.com/showthread.php?163496-SHK_Patrol
-
+	Modified for EOS by Bangabob
+	
+Requires SHK_POS.sqf
   Required Parameters:
     0 Object or Group     The patrolling unit
-      
-  Optional Parameters:
-    1 Number              Distance from the unit's starting position to create waypoints. Default is 250.
-
-  Usage:
-    Start from group leader's init field or from init.sqf:
-      nul = [params] execVM "shk_patrol.sqf";
-      
-    Examples:
-      nul = this execVM "shk_patrol.sqf";
-      nul = [this,350] execVM "shk_patrol.sqf";
-      nul = [grpA,300] execVM "shk_patrol.sqf";
+	1 Marker Name
 */
 DEBUG = false;
 
 if !isserver exitwith {};
 
 // Handle parameters
-private ["_grp","_dst"];
+private ["_grp","_dst","_marker"];
 _dst = 250;
 switch (typename _this) do {
   case (typename grpNull): { _grp = _this };
@@ -35,7 +27,7 @@ switch (typename _this) do {
   case (typename []): {
     _grp = _this select 0;
     if (typename _grp == typename objNull) then {_grp = group _grp};
-    if (count _this > 1) then {_dst = _this select 1};
+	if (count _this > 1) then {_marker = _this select 1};
   };
 };
 
@@ -44,25 +36,18 @@ _grp setSpeedMode "LIMITED";
 _grp setCombatMode "YELLOW";
 _grp setFormation (["STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "DIAMOND"] call BIS_fnc_selectRandom);
 
-private ["_cnt","_ang","_wps","_slack","_aos"];
+private ["_cnt","_wps","_slack"];
 _cnt = 4 + (floor random 3) + (floor (_dst / 100)); // number of waypoints
-_ang = (360 / (_cnt - 1)); // split circle depending on number of waypoints
 _wps = [];
 _slack = _dst / 5.5;
 if (_slack < 20) then {_slack = 20};
-_aos = random 360;
 
 // Find positions for waypoints
-private ["_a","_p","_pos"];
-_pos = getpos leader _grp;
-
+private ["_a","_p"];
 while {count _wps < _cnt} do {
-    _a = (count _wps * _ang) + _aos;
-
-    _p = [((_pos select 0) - ((sin _a) * _dst)),
-          ((_pos select 1) - ((cos _a) * _dst)),
-          0];
-
+if (surfaceiswater (getpos(leader _grp)) ) then {
+	_p = [_mkr,true] call SHK_pos;}else{_p = [_mkr,true] call SHK_pos;
+	};
     _wps set [count _wps, _p];
 };
 
