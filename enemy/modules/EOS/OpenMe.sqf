@@ -23,7 +23,8 @@ EOS_DAMAGE_MULTIPLIER=1;	// 1 is default
 EOS_KILLCOUNTER=true;		// Counts killed units
 
 //null = [["BAS_zone_1"],[0,1],[0,2],[0],[1,2],[0,0,EAST,TRUE],[0,2,120,TRUE,FALSE]] call Bastion_Spawn;
-
-{[[_x],[1,1,50],[1,2,50],[1,1,50],[1,50],[2,100],[0,0],[0,0,1000,EAST,TRUE,TRUE]] call EOS_Spawn} forEach ztowns;
-{[[_x],[1,1,50],[1,2,50],[1,1,50],[1,50],[2,100],[0,0],[0,0,1000,EAST,TRUE,TRUE]] call EOS_Spawn} forEach ztownm;
-{[[_x],[1,1,50],[1,2,50],[1,1,50],[1,50],[2,100],[0,0],[0,0,1000,EAST,TRUE,TRUE]] call EOS_Spawn} forEach ztownl;
+/*
+waitUntil {!isNil "ztowninit"};
+{[[_x],[1,1,50],[1,2,50],[1,1,50],[1,50],[2,100],[0,0],[0,0,1000,EAST,TRUE,TRUE]] call EOS_Spawn} count ztowns;
+{[[_x],[1,1,50],[1,2,50],[1,1,50],[1,50],[2,100],[0,0],[0,0,1000,EAST,TRUE,TRUE]] call EOS_Spawn} count ztownm;
+{[[_x],[1,1,50],[1,2,50],[1,1,50],[1,50],[2,100],[0,0],[0,0,1000,EAST,TRUE,TRUE]] call EOS_Spawn} count ztownl;*/
