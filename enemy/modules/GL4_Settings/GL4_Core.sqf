@@ -42,4 +42,4 @@
   // Choose if the "Initialize" debug should be used.
   // Note: This debug displays how "Group Link 4" was initialized directly after the initialize of "Group Link 4" was done.
   // True / False, default is True
-     GL4_Core set [4, False];
+    // GL4_Core set [4, False];

@@ -558,7 +558,7 @@
   // Note: This feature gives the player the ability to simulate dead if the player was hit by a enemy and if no allied are nearby.
   // Warning: While a player do simulate dead there is a chancse that enemys do recognize the simulating player.
   // True / False, default is True
-    GL4_Local set [84, False];
+    // GL4_Local set [84, False];
 
     // Simulate Dead Allied Distance:
     // Choose how far each allied of the player group must be away from the player that he get the ability to simulate dead.
