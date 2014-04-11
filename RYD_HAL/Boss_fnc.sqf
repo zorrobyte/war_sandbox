@@ -1121,10 +1121,7 @@ RYD_ExecutePath =
 		if (RydBB_LRelocating) then
 			{
 			[_HQ] call RYD_WPdel;
-			_wp = [_HQ,_actOPos,"HOLD","AWARE","GREEN","LIMITED",["true",""],true,50,[0,0,0],"FILE"] call RYD_WPadd;
-			//Zorro move leader to POS
-			sleep 1;
-			leader _HQ setPosATL _actOPos;
+			_wp = [_HQ,_actOPos,"HOLD","AWARE","GREEN","LIMITED",["true",""],true,50,[0,0,0],"FILE"] call RYD_WPadd
 			}
 		};
 		
