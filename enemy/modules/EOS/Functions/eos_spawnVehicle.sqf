@@ -18,7 +18,7 @@ _vehCrew=[];
 			_unit = _grp createUnit [(_vehicleType select 1), _position, [], 0, "CAN_COLLIDE"];					
 			_unit assignAsDriver _vehicle;
 			_unit moveInDriver _vehicle;
-			_unit synchronizeObjectsAdd [Z_Defend];
+//			_unit synchronizeObjectsAdd [Z_Defend];
 			_vehCrew set [count _vehCrew,_unit];
 			};
 	
@@ -26,7 +26,7 @@ _vehCrew=[];
 			_unit = _grp createUnit [(_vehicleType select 1), _position, [], 0, "CAN_COLLIDE"];
 			_unit assignAsGunner _vehicle;
 			_unit MoveInTurret [_vehicle,_currentPosition select 1];
-			_unit synchronizeObjectsAdd [Z_Defend];
+//			_unit synchronizeObjectsAdd [Z_Defend];
 			_vehCrew set [count _vehCrew,_unit];
 			};
 			
