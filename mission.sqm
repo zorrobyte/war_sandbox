@@ -42,7 +42,6 @@ class Mission
 		"A3_Modules_F_Multiplayer",
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
-		"A3_Characters_F_OPFOR",
 		"A3_Weapons_F_Ammoboxes",
 		"A3_Structures_F_Training",
 		"a3_map_altis"
@@ -71,7 +70,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=13;
+		items=12;
 		class Item0
 		{
 			side="LOGIC";
@@ -404,24 +403,6 @@ class Mission
 				};
 			};
 		};
-		class Item12
-		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={13098.104,77.689873,21482.854};
-					id=17;
-					side="EAST";
-					vehicle="O_Soldier_F";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.46666664;
-				};
-			};
-		};
 	};
 	class Vehicles
 	{
@@ -430,7 +411,7 @@ class Mission
 		{
 			position[]={9169.999,14.469776,21644.01};
 			azimut=56.73;
-			id=18;
+			id=17;
 			side="EMPTY";
 			vehicle="Box_NATO_Wps_F";
 			skill=0.60000002;
@@ -441,7 +422,7 @@ class Mission
 		{
 			position[]={26856.018,22.481749,24638.385};
 			azimut=41.086666;
-			id=19;
+			id=18;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -450,7 +431,7 @@ class Mission
 		{
 			position[]={26864.52,23.18701,24630.938};
 			azimut=41.086666;
-			id=20;
+			id=19;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -459,7 +440,7 @@ class Mission
 		{
 			position[]={26846.582,22.283171,24637.482};
 			azimut=131.39046;
-			id=21;
+			id=20;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -468,7 +449,7 @@ class Mission
 		{
 			position[]={26839.1,22.369457,24629.023};
 			azimut=131.39046;
-			id=22;
+			id=21;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -477,7 +458,7 @@ class Mission
 		{
 			position[]={26839.791,22.821615,24619.295};
 			azimut=41.086666;
-			id=23;
+			id=22;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -486,7 +467,7 @@ class Mission
 		{
 			position[]={26848.295,23.59868,24611.852};
 			azimut=41.086666;
-			id=24;
+			id=23;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -495,7 +476,7 @@ class Mission
 		{
 			position[]={26829.508,23.188768,24607.205};
 			azimut=41.086666;
-			id=25;
+			id=24;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -504,7 +485,7 @@ class Mission
 		{
 			position[]={26838.01,23.601847,24599.758};
 			azimut=41.086666;
-			id=26;
+			id=25;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -513,7 +494,7 @@ class Mission
 		{
 			position[]={26820.072,23.177784,24606.303};
 			azimut=131.39046;
-			id=27;
+			id=26;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -522,7 +503,7 @@ class Mission
 		{
 			position[]={26812.59,23.267197,24597.844};
 			azimut=131.39046;
-			id=28;
+			id=27;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -531,7 +512,7 @@ class Mission
 		{
 			position[]={26813.281,23.520683,24588.115};
 			azimut=41.086666;
-			id=29;
+			id=28;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -540,7 +521,7 @@ class Mission
 		{
 			position[]={26821.785,23.737974,24580.672};
 			azimut=41.086666;
-			id=30;
+			id=29;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -549,7 +530,7 @@ class Mission
 		{
 			position[]={9245.0049,16.394972,21616.775};
 			azimut=54.439537;
-			id=31;
+			id=30;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -558,7 +539,7 @@ class Mission
 		{
 			position[]={9251.5596,16.608555,21607.566};
 			azimut=54.439537;
-			id=32;
+			id=31;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -567,7 +548,7 @@ class Mission
 		{
 			position[]={9235.6162,16.1577,21618.078};
 			azimut=144.74332;
-			id=33;
+			id=32;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -576,7 +557,7 @@ class Mission
 		{
 			position[]={9226.3828,15.947236,21611.578};
 			azimut=144.74332;
-			id=34;
+			id=33;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -585,7 +566,7 @@ class Mission
 		{
 			position[]={9224.8086,16.148756,21601.957};
 			azimut=54.439537;
-			id=35;
+			id=34;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -594,7 +575,7 @@ class Mission
 		{
 			position[]={9231.3633,16.511389,21592.744};
 			azimut=54.439537;
-			id=36;
+			id=35;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -603,7 +584,7 @@ class Mission
 		{
 			position[]={9212.0107,16.3323,21592.559};
 			azimut=54.439537;
-			id=37;
+			id=36;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -612,7 +593,7 @@ class Mission
 		{
 			position[]={9218.5645,16.589479,21583.355};
 			azimut=54.439537;
-			id=38;
+			id=37;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -621,7 +602,7 @@ class Mission
 		{
 			position[]={9202.623,16.315937,21593.857};
 			azimut=144.74332;
-			id=39;
+			id=38;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -630,7 +611,7 @@ class Mission
 		{
 			position[]={9193.3926,16.237997,21587.365};
 			azimut=144.74332;
-			id=40;
+			id=39;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -639,7 +620,7 @@ class Mission
 		{
 			position[]={9191.8145,16.421185,21577.736};
 			azimut=54.439537;
-			id=41;
+			id=40;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -648,7 +629,7 @@ class Mission
 		{
 			position[]={9198.3711,16.541842,21568.531};
 			azimut=54.439537;
-			id=42;
+			id=41;
 			side="EMPTY";
 			vehicle="Dirthump_2_F";
 			skill=0.60000002;
@@ -657,7 +638,7 @@ class Mission
 		{
 			position[]={9167.499,14.433599,21647.828};
 			azimut=56.73;
-			id=43;
+			id=42;
 			side="EMPTY";
 			vehicle="Box_NATO_Wps_F";
 			skill=0.60000002;
@@ -668,7 +649,7 @@ class Mission
 		{
 			position[]={26758.543,20.998985,24624.971};
 			azimut=40.983002;
-			id=44;
+			id=43;
 			side="EMPTY";
 			vehicle="Box_NATO_Wps_F";
 			skill=0.60000002;
@@ -679,7 +660,7 @@ class Mission
 		{
 			position[]={26755.111,20.718485,24627.969};
 			azimut=40.983002;
-			id=45;
+			id=44;
 			side="EMPTY";
 			vehicle="Box_NATO_Wps_F";
 			skill=0.60000002;

@@ -13,6 +13,5 @@ diag_log format["WS Initialisation Completed", time];
 
 //debug
 Z_Debug = true;
-//nul = [true,"ran",(10+random 40),10,west,1,random 0.8] execVM "scripts\ws_assassins.sqf";
 
 
