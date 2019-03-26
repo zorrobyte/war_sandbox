@@ -1,3 +1,5 @@
+http://www.armaholic.com/page.php?id=19357
+
 Description:
 US forces have been stationed in Stratis with the objective of clearing out the REDFOR occupation in areas of strategic importance. Papa Bear will inform BLUFOR of cleared areas by sending intel to your map.
 
